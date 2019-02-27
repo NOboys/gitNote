@@ -30,13 +30,15 @@
     偏慢，没办法
 
 ---
-#### （三）比对sql
+#### （三）和统一代办比对
 
     考虑到可能和辅助比对，因为我们是实际生产库，所以需要加系统来区分。
 
-#####  和统一比对 代办 
-
-    需要 wiid state 
+    表名 ： uniflow_workitem 
+    需要两个字段： wiid state 
+    同理 阅办表修改
+    注意： 修改代办表，需要同步修改流程实例表
+            修改阅办表，不需要同步修改流程实例表
     
 - 我们有 统一没有  
 
@@ -65,32 +67,29 @@
     		-- and uw.system_id in ('')
     ;
 
-##### 和统一比对阅办
 
-    需要 riid state 
+#### （四）追加内容
 
-- 我们有 统一没有
+##### 案例 大批量修改数据
 
+    查询 影像系统 的在途单据（约12万），
+    并修改为已办，
+    2000 提交一次。
 
-    select riid from uniflow_readitem 
-        -- and uw.system_id in ('')
-    minus 
-    select riid from temp_readitem 
-    ;
- 
-- 我们没有 统一有
+    conn mss/passwd ;
 
-
-    select riid from temp_readitem 
-    minus 
-    select riid from uniflow_readitem 
-        -- and uw.system_id in ('')
-    ;
-
-- 都有，但状态不一致
-
-
-    select uw.riid lcyq-riid,uw.statelcyq-state,tw.riid ty-riid,tw.state ty-state 
-    	from uniflow_readitem uw,temp_readitem  tw where uw.riid=tw.riid and uw.state != tw.state 
-    		-- and uw.system_id in ('')
-    ;
+    declare
+    v_count number; 
+    begin
+    for data in ( select /*+ index(uniflow_workitem uniflow_workitem_query3) */ wiid from uniflow_workitem where system_id = 'ImageAssist' and state in (1,3,10) ) 
+    loop 
+    	update uniflow_workitem uw set uw.state = 2 where uw.wiid = data.wiid;
+    	v_count := v_count + 1;
+    	if v_count >= 2000 then 
+    	commit;
+    	v_count := 1;
+    	end if;
+    end loop;
+    commit;
+    end;
+    /
