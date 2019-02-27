@@ -1,37 +1,55 @@
-#### （一）创建模板表
+#### （一）创建临时表
 
 ---
 
 - 临时阅办表
 
 
-    trnucate table temp_READitem ;
+    --truncate table temp_READitem ;
     create table temp_READitem as select * from uniflow_READitem where 1=2 ;
     alter table temp_READitem add primary key (Riid) ;
     alter table temp_readitem nologging;
-    --除主键外其余全部设置可null
     select * from temp_readitem ;
+
+    --除主键外其余全部设置可null
+    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
+        from user_cons_columns where table_name='TEMP_READITEM' and COLUMN_NAME <> 'RIID' ;
 
 - 临时代办表
 
 
-    trnucate table temp_workitem ;
-    create table temp_workitem as select * from uniflow_READitem where 1=2 ;
-    alter table temp_workitem add primary key (Riid) ;
+    --truncate table temp_workitem ;
+    create table temp_workitem as select * from uniflow_workitem where 1=2 ;
+    alter table temp_workitem add primary key (wiid) ;
     alter table temp_workitem nologging;
-    --除主键外其余全部设置可null
     select * from temp_workitem ;
+
+    --除主键外其余全部设置可null
+    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
+        from user_cons_columns where table_name='TEMP_WORKITEM' and COLUMN_NAME <> 'WIID' ;
+
+- 临时实例表
+
+
+    --truncate table temp_process_inst ;
+    create table temp_process_inst as select * from uniflow_process_inst where 1=2 ;
+    alter table temp_process_inst add primary key (piid) ;
+    alter table temp_process_inst nologging;
+    select * from temp_process_inst ;
+
+    --除主键外其余全部设置可null
+    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
+        from user_cons_columns where table_name='TEMP_PROCESS_INST' and COLUMN_NAME <> 'PIID' ;
 
 ---
 
 #### （二）plsql txt 导入
 
     虽然是csv文件，但都是采用txt导入
-    注意先转换txt，不然会有科学计数法的干扰
-    偏慢，没办法
+    注意先转换txt，不然 纯数字的字段（比如工单号）会有科学计数法的干扰
+    这种方式有点慢，没办法
 
 ---
-
 #### （三）和统一代办比对
 
     考虑到可能和辅助比对，因为我们是实际生产库，所以需要加系统来区分。
@@ -83,7 +101,8 @@
     declare
     v_count number; 
     begin
-    for data in ( select /*+ index(uniflow_workitem uniflow_workitem_query3) */ wiid from uniflow_workitem where system_id = 'ImageAssist' and state in (1,3,10) ) 
+    -- for data in ( select /*+ index(uniflow_workitem uniflow_workitem_query3) */ wiid from uniflow_workitem where system_id = 'ImageAssist' and state in (1,3,10) ) 
+    for data in ( select wiid from temp_workitem ) 
     loop 
     	update uniflow_workitem uw set uw.state = 2 where uw.wiid = data.wiid;
     	v_count := v_count + 1;
