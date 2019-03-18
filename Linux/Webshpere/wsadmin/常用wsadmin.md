@@ -9,14 +9,19 @@
     print AdminApp.list() 
 
     列出server名（包含IHS名）
-    print AdminConfig.list("Server")
+    print AdminTask.listServers('[-serverType APPLICATION_SERVER ]')
 
     列出集群名
-    print AdminConfig.list('ServerCluster', AdminConfig.getid( '/Cell:gdtestwas103Cell01/')) 
     print AdminConfig.list('ServerCluster')
 
     只列出IHS名
     print AdminTask.listServers('[-serverType WEB_SERVER ]') 
+
+    列出节点名
+    print AdminTask.listNodes()
+
+    列出单元名
+    print AdminConfig.list('Cell')
 
 ---
 
