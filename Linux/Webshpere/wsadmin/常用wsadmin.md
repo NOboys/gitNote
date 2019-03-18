@@ -9,14 +9,6 @@
     列出应用名
     print AdminApp.list() 
 
-    ApprovePend_war
-    BQConsole_war
-    IntegratedAdminConsole_war
-    MessageCenter_war
-    ProcessMonitor_war
-    UniflowAdminConsole_war
-    UniflowAdminHelper_war
-    UniflowAdminStategy_war
     UniflowCheck_war
     UniflowCollector-nxt_war
     UniflowCollector_war
@@ -32,9 +24,7 @@
     ucc3_4member103(cells/gdtestwas103Cell01/nodes/WasNode103/servers/ucc3_4member103|server.xml)
     ucl_member103(cells/gdtestwas103Cell01/nodes/WasNode103/servers/ucl_member103|server.xml)
     IntegratedAdmin(cells/gdtestwas103Cell01/nodes/WasNode103/servers/IntegratedAdmin|server.xml)
-    fz_member104(cells/gdtestwas103Cell01/nodes/WasNode104/servers/fz_member104|server.xml)
-    yw_member104(cells/gdtestwas103Cell01/nodes/WasNode104/servers/yw_member104|server.xml)
-    PIMtest104(cells/gdtestwas103Cell01/nodes/WasNode104/servers/PIMtest104|server.xml)
+
 
     列出集群名
     print AdminConfig.list('ServerCluster')
@@ -43,8 +33,7 @@
     IntegratedAdmin(cells/gdtestwas103Cell01/clusters/IntegratedAdmin|cluster.xml#ServerCluster_1435838255511)
     UCC_Cluster(cells/gdtestwas103Cell01/clusters/UCC_Cluster|cluster.xml#ServerCluster_1419842719053)
     UCL_Cluster(cells/gdtestwas103Cell01/clusters/UCL_Cluster|cluster.xml#ServerCluster_1419842877134)
-    YW_Cluster(cells/gdtestwas103Cell01/clusters/YW_Cluster|cluster.xml#ServerCluster_1419852645571)
-    ucc3_4(cells/gdtestwas103Cell01/clusters/ucc3_4|cluster.xml#ServerCluster_1480299732782)
+
 
     只列出IHS名
     print AdminTask.listServers('[-serverType WEB_SERVER ]') 
