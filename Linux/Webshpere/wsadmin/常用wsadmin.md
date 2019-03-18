@@ -47,7 +47,8 @@
 #### 执行模式
 
 ##### 
-
+    /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython  -user wasadmin -password Zone2019# 
+    
 
 ##### 文本模式
     案例，
