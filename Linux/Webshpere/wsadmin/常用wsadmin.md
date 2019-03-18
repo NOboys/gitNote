@@ -44,7 +44,8 @@
     AdminNodeManagement.syncActiveNodes()
 
 
-#### 执行模式，
+#### 执行模式
+
 
     案例，
     命令写在 /data/wsadmin/test1.py 里
