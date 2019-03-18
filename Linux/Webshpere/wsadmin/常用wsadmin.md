@@ -17,7 +17,7 @@
     UniflowDatasource_war
     UniflowMigrate_war
 
-    列出server名（包含IHS名）
+    列出server名
     print AdminTask.listServers('[-serverType APPLICATION_SERVER ]')
 
     ucc_member103(cells/gdtestwas103Cell01/nodes/WasNode103/servers/ucc_member103|server.xml)
