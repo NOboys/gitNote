@@ -13,6 +13,7 @@
     select * from temp_readitem ;
 
     --除主键外其余全部设置可null
+
     select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
         from user_cons_columns where table_name='TEMP_READITEM' and COLUMN_NAME <> 'RIID' ;
 
@@ -20,12 +21,14 @@
 
 
     --truncate table temp_workitem ;
+
     create table temp_workitem as select * from uniflow_workitem where 1=2 ;
     alter table temp_workitem add primary key (wiid) ;
     alter table temp_workitem nologging;
     select * from temp_workitem ;
 
     --除主键外其余全部设置可null
+
     select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
         from user_cons_columns where table_name='TEMP_WORKITEM' and COLUMN_NAME <> 'WIID' ;
 
