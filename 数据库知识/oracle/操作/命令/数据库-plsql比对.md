@@ -6,6 +6,7 @@
 
 
     --truncate table temp_READitem ;
+
     create table temp_READitem as select * from uniflow_READitem where 1=2 ;
     alter table temp_READitem add primary key (Riid) ;
     alter table temp_readitem nologging;
