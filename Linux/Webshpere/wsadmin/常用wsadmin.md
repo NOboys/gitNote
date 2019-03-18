@@ -1,6 +1,6 @@
 
 
-#### 查询列表
+#### **查询列表**
 
 
     命令有点乱，需要更多资料，先讲究把
@@ -55,7 +55,7 @@
 
     gdtestwas103Cell01(cells/gdtestwas103Cell01|cell.xml#Cell_1)
 
-#### 安装跟新
+#### **安装跟新**
 
     -- 部分更新
     AdminApp.update("UniflowControlCenter-nxt_war", "partialapp",  '[-contents /data/wsadmin/UniflowControlCenter-nxt.war.zip]')
@@ -78,7 +78,7 @@
     AdminNodeManagement.syncActiveNodes()
 
 
-#### 执行模式
+#### **执行模式**
 
 - wsadmin环境执行
 
