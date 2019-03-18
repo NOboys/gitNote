@@ -46,9 +46,9 @@
 
 #### 执行模式
 
-##### 
+##### wsadmin环境执行
     /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython  -user wasadmin -password Zone2019# 
-    
+    将上面的命令拷贝下来直接执行
 
 ##### 文本模式
     案例，
