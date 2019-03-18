@@ -55,7 +55,7 @@
 
     gdtestwas103Cell01(cells/gdtestwas103Cell01|cell.xml#Cell_1)
 
----
+#### 安装跟新
 
     -- 部分更新
     AdminApp.update("UniflowControlCenter-nxt_war", "partialapp",  '[-contents /data/wsadmin/UniflowControlCenter-nxt.war.zip]')
