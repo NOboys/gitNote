@@ -47,6 +47,9 @@
 #### 执行模式
 
 ##### 
+
+
+##### 文本模式
     案例，
     命令写在 /data/wsadmin/test1.py 里
     日志在 /data/wsadmin/trace.log   
