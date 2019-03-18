@@ -50,9 +50,11 @@
     /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython  -user wasadmin -password Zone2019# 
     将上面的命令拷贝下来直接执行
 
-##### 文本模式
+- 文本模式
+-
+
     案例，
-    命令写在 /data/wsadmin/test1.py 里
+    将命令记录在 /data/wsadmin/test1.py 里
     日志在 /data/wsadmin/trace.log   
     部分更新 ucc集群上的 UniflowControlCenter-nxt_war  
 
