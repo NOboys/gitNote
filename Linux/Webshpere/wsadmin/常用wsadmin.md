@@ -1,12 +1,15 @@
+    命令有点乱，需要更多资料，先将就把
 
 
-### **查询列表**
+#### 查询列表
 
 
-    命令有点乱，需要更多资料，先讲究把
+    命令有点乱，需要更多资料，先将就把
 
 
-    列出应用名
+- 列出应用名
+
+
     print AdminApp.list() 
 
     UniflowCheck_war
@@ -17,7 +20,9 @@
     UniflowDatasource_war
     UniflowMigrate_war
 
-    列出server名
+- 列出 Appserver名
+
+
     print AdminTask.listServers('[-serverType APPLICATION_SERVER ]')
 
     ucc_member103(cells/gdtestwas103Cell01/nodes/WasNode103/servers/ucc_member103|server.xml)
@@ -26,7 +31,9 @@
     IntegratedAdmin(cells/gdtestwas103Cell01/nodes/WasNode103/servers/IntegratedAdmin|server.xml)
 
 
-    列出集群名
+- 列出集群名
+
+
     print AdminConfig.list('ServerCluster')
 
     FZ_Cluster(cells/gdtestwas103Cell01/clusters/FZ_Cluster|cluster.xml#ServerCluster_1419852602073)
@@ -35,13 +42,17 @@
     UCL_Cluster(cells/gdtestwas103Cell01/clusters/UCL_Cluster|cluster.xml#ServerCluster_1419842877134)
 
 
-    只列出IHS名
+- 只列出IHS名
+
+
     print AdminTask.listServers('[-serverType WEB_SERVER ]') 
 
     webserver105(cells/gdtestwas103Cell01/nodes/IHSNode105/servers/webserver105|server.xml)
     webserver103(cells/gdtestwas103Cell01/nodes/IHSNode103/servers/webserver103|server.xml)
 
-    列出节点名
+- 列出节点名
+
+
     print AdminTask.listNodes()
 
     IHSNode105
@@ -50,26 +61,36 @@
     WasNode104
     IHSNode103
 
-    列出单元名
+- 列出单元名
+
+
     print AdminConfig.list('Cell')
 
     gdtestwas103Cell01(cells/gdtestwas103Cell01|cell.xml#Cell_1)
 
-### **安装跟新**
+#### 安装跟新
 
-    -- 部分更新
+- 部分更新
+
+
     AdminApp.update("UniflowControlCenter-nxt_war", "partialapp",  '[-contents /data/wsadmin/UniflowControlCenter-nxt.war.zip]')
     AdminConfig.save()
     AdminNodeManagement.syncActiveNodes()
 
 
-    -- 卸载
+- 卸载
+
+
     AdminApp.uninstall('UniflowCollector-nxt_war')
     AdminConfig.save()
     AdminNodeManagement.syncActiveNodes()
 
 
-    -- 安装，来源 电信广东测试，由was控制台自动生成
+
+- 安装
+
+
+    -- 来源 电信广东测试，由was控制台自动生成
     -- IHS 引用 webserver103
     -- 集群 引用 UCL_Cluster
     -- 上下文根  /UniflowCollector-nxt
@@ -78,7 +99,7 @@
     AdminNodeManagement.syncActiveNodes()
 
 
-### **执行模式**
+#### 执行模式
 
 - wsadmin环境执行
 
