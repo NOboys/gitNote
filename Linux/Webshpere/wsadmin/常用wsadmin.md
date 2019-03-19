@@ -131,3 +131,4 @@
 
     /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython -f /data/wsadmin/test1.py UCC_Cluster  -user wasadmin -password Zone2019# -tracefile /data/wsadmin/trace.log 
     
+[](         gitNote/图片链接/newnote_1552961115674.html       )
