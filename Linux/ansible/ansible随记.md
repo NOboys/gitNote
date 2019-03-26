@@ -22,7 +22,7 @@ login shell 和 non-login shell
 
 * 而non-login shell加载环境变量的顺序是： ① ~/.bashrc ② /etc/bashrc
 
-* 日常远程登录执行的是login shell，会加载/etc/profile,~/.bash_profile 
+* 日常xshell远程登录执行的是login shell，会加载/etc/profile,~/.bash_profile 
 
 * ansible这类远程执行的non-login shell 并不会加载/etc/profile和~/.bash_profile下的环境变量，只是加载~/.bashrc和/etc/bashrc
 
