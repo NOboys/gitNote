@@ -5,7 +5,7 @@
     shell模块 [执行远程主机的shell/python脚本]
     raw模块 [类似于command模块、支持管道传递]
 	
-#### 特性
+#### 基本特性
 
     1 Playbooks 可用于声明配置,
     更强大的地方在于,在 playbooks中可以编排有序的执行过程,
