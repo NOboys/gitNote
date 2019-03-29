@@ -1,6 +1,7 @@
     
 *命令有点乱，需要更多资料，先将就把*  
-*所有命令电信广东测试通过，部分由was控制台自动生成*
+*所有命令电信广东测试(192.168.161.103:/data/wsadmin)*通过  
+*部分命令由was控制台自动生成*
 
 ## 控制台命令自动生成
 
@@ -29,9 +30,7 @@ AdminConfig
 
 
 
-
 - 列出应用名
-
 
 
 ```
@@ -44,11 +43,11 @@ UniflowControlCenter-nxt_war
 UniflowControlCenter_war
 UniflowDatasource_war
 UniflowMigrate_war
+
 ```
 
 
 - 列出 Appserver名
-
 
 
 ```
@@ -65,7 +64,6 @@ IntegratedAdmin(cells/gdtestwas103Cell01/nodes/WasNode103/servers/IntegratedAdmi
 - 列出集群名
 
 
-
 ```
 print AdminConfig.list('ServerCluster')
 
@@ -80,7 +78,6 @@ UCL_Cluster(cells/gdtestwas103Cell01/clusters/UCL_Cluster|cluster.xml#ServerClus
 - 只列出IHS名
 
 
-
 ```
 print AdminTask.listServers('[-serverType WEB_SERVER ]') 
 
@@ -90,7 +87,6 @@ webserver103(cells/gdtestwas103Cell01/nodes/IHSNode103/servers/webserver103|serv
 
 
 - 列出节点名
-
 
 
 ```
@@ -106,8 +102,6 @@ IHSNode103
 
 - 列出单元名
 
-
-
 ```
 print AdminConfig.list('Cell')
 
@@ -115,22 +109,40 @@ gdtestwas103Cell01(cells/gdtestwas103Cell01|cell.xml#Cell_1)
 ```
 
 
-#### 安装跟新
+#### 应用相关操作（多个应用，只能多条）
 
-- 部分更新
 
+
+- 应用整包更新
 
 
 ```
-AdminApp.update("UniflowControlCenter-nxt_war", "partialapp",  '[-contents /data/wsadmin/UniflowControlCenter-nxt.war.zip]')
+AdminApp.update("UniflowControlCenter-nxt_war", "app",  '[-operation update -contents /data/wsadmin/UniflowControlCenter-nxt.war]')
 AdminConfig.save()
 AdminNodeManagement.syncActiveNodes()
 ```
 
 
 
-- 卸载
+- 应用部分更新
 
+
+```
+AdminApp.update("UniflowControlCenter-nxt_war", "partialapp",  '[-operation update -contents /data/wsadmin/UniflowControlCenter-nxt.war.zip]')
+AdminConfig.save()
+AdminNodeManagement.syncActiveNodes()
+```
+
+
+- 应用导出
+
+
+```
+AdminApp.export('UniflowCollector_war', '/data/wsadmin/UniflowCollector_war.ear')"
+```
+
+
+- 应用卸载
 
 
 ```
@@ -140,11 +152,7 @@ AdminNodeManagement.syncActiveNodes()
 ```
 
 
-
-
-- 安装
-
-
+- 应用安装
 
 
 ```
@@ -156,12 +164,30 @@ AdminConfig.save()
 AdminNodeManagement.syncActiveNodes()
 ```
 
+- 应用停止
+
+
+
+```
+AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_member104,*'),'stopApplication','BQConsole_war')
+```
+
+
+
+
+- 应用启动
+
+
+```
+AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_member104,*'),'startApplication','BQConsole_war')
+```
+
+
 
 
 #### 执行模式
 
 - wsadmin环境执行
-
 
 
 
@@ -171,8 +197,8 @@ AdminNodeManagement.syncActiveNodes()
 ```
 
 
-- 文本模式
 
+- 文本模式
 
 
 ```
