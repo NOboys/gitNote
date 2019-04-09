@@ -32,3 +32,10 @@ login shell 和 non-login shell
         并且可以同步或异步的发起任务.
 
 
+### 查看模块帮助
+
+    列出模块列表 
+    ansible-doc -l
+    查看模块帮助
+    ansible-doc -s shell
+    ansible-doc -s ping
