@@ -7,6 +7,49 @@ ansible 10.1.1.113 -m ping
 
 ## raw 模块 
 
+## pause 模块
+
+```
+在playbook执行的过程中暂停一定时间或者提示用户进行某些操作
+
+常用参数：
+minutes：暂停多少分钟
+seconds：暂停多少秒
+prompt：打印一串信息提示用户操作
+```
+
+## wait_for 模块
+
+
+```
+在playbook的执行过程中，等待某些操作完成以后再进行后续操作
+
+常用参数：
+
+connect_timeout：在下一个任务执行之前等待连接的超时时间
+delay：等待一个端口或者文件或者连接到指定的状态时，默认超时时间为300秒，在这等待的300s的时间里，wait_for模块会一直轮询指定的对象是否到达指定的状态，delay即为多长时间轮询一次状态。
+host：wait_for模块等待的主机的地址，默认为127.0.0.1
+port：wait_for模块待待的主机的端口
+path：文件路径，只有当这个文件存在时，下一任务才开始执行，即等待该文件创建完成
+
+state：等待的状态，即等待的文件或端口或者连接状态达到指定的状态时，下一个任务开始执行。当等的对象为端口时，状态有started，stoped，即端口已经监听或者端口已经关闭；当等待的对象为文件时，状态有present或者started，absent，即文件已创建或者删除；当等待的对象为一个连接时，状态有drained，即连接已建立。默认为started
+timeout：wait_for的等待的超时时间,默认为300秒
+```
+
+## fail 模块
+
+```
+用于终止当前playbook的执行，通常与条件语句组合使用，当满足条件时，终止当前play的运行。可以直接由failed_when取代。
+
+选项只有一个：
+msg：终止前打印出信息
+
+示例：
+
+- fail: msg="The system may not be provisioned according to the CMDB status."
+  when: cmdb_status != "to-be-staged"
+```
+
 
 
 ## yum 模块 
