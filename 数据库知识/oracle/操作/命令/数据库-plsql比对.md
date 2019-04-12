@@ -147,9 +147,8 @@
 
     	v_count := v_count + 1;
     	if v_count >= 2000 then 
-    	commit;
-
-    	v_count := 1;
+    		commit;
+    		v_count := 1;
     	end if;
     end loop;
     commit;
