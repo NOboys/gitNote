@@ -150,6 +150,7 @@
     		commit;
     		v_count := 1;
     	end if;
+
     end loop;
     commit;
     end;
