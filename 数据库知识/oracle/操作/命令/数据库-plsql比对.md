@@ -2,49 +2,77 @@
 
 ---
 
-
 - 临时阅办表
 
 
-    --truncate table temp_READitem ;
-
+    -- truncate table temp_READitem ;
+    drop table temp_readitem purge ;
     create table temp_READitem as select * from uniflow_READitem where 1=2 ;
     alter table temp_READitem add primary key (Riid) ;
     alter table temp_readitem nologging;
     select * from temp_readitem ;
 
     --除主键外其余全部设置可null
-
-    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
-        from user_cons_columns where table_name='TEMP_READITEM' and COLUMN_NAME <> 'RIID' ;
+    --select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' from user_cons_columns where table_name='TEMP_READITEM' and COLUMN_NAME <> 'RIID' ;
+    alter table TEMP_READITEM modify SYSTEM_ID null;
+    alter table TEMP_READITEM modify TEMPLATE_ID null;
+    alter table TEMP_READITEM modify TEMPLATE_VER null;
+    alter table TEMP_READITEM modify TEMPLATE_ALIAS null;
+    alter table TEMP_READITEM modify APPLY_ID null;
+    alter table TEMP_READITEM modify STATE null;
+    alter table TEMP_READITEM modify CREATE_TIME null;
+    alter table TEMP_READITEM modify PIID null;
+    alter table TEMP_READITEM modify NODE_ID null;
+    alter table TEMP_READITEM modify NODE_NAME null;
+    alter table TEMP_READITEM modify NODE_TYPE null;
+    alter table TEMP_READITEM modify OWNER null;
 
 - 临时代办表
 
 
     --truncate table temp_workitem ;
-
+    drop table temp_workitem purge ;
     create table temp_workitem as select * from uniflow_workitem where 1=2 ;
     alter table temp_workitem add primary key (wiid) ;
     alter table temp_workitem nologging;
     select * from temp_workitem ;
 
     --除主键外其余全部设置可null
+    --select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' from user_cons_columns where table_name='TEMP_WORKITEM' and COLUMN_NAME <> 'WIID' ;
+    alter table TEMP_WORKITEM modify SYSTEM_ID null;
+    alter table TEMP_WORKITEM modify TEMPLATE_ID null;
+    alter table TEMP_WORKITEM modify TEMPLATE_VER null;
+    alter table TEMP_WORKITEM modify APPLY_ID null;
+    alter table TEMP_WORKITEM modify STATE null;
+    alter table TEMP_WORKITEM modify CREATE_TIME null;
+    alter table TEMP_WORKITEM modify PIID null;
+    alter table TEMP_WORKITEM modify NODE_ID null;
+    alter table TEMP_WORKITEM modify NODE_NAME null;
+    alter table TEMP_WORKITEM modify NODE_TYPE null;
+    alter table TEMP_WORKITEM modify OWNER null;
+    alter table TEMP_WORKITEM modify MAP_WIID null;
+    alter table TEMP_WORKITEM modify ORIGINAL_OWNER null;
 
-    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
-        from user_cons_columns where table_name='TEMP_WORKITEM' and COLUMN_NAME <> 'WIID' ;
 
 - 临时实例表
 
 
     --truncate table temp_process_inst ;
+    drop table temp_process_inst purge ;
     create table temp_process_inst as select * from uniflow_process_inst where 1=2 ;
     alter table temp_process_inst add primary key (piid) ;
     alter table temp_process_inst nologging;
     select * from temp_process_inst ;
 
     --除主键外其余全部设置可null
-    select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' 
-        from user_cons_columns where table_name='TEMP_PROCESS_INST' and COLUMN_NAME <> 'PIID' ;
+    -- select 'alter table '|| TABLE_NAME || ' modify '|| COLUMN_NAME || ' null;' from user_cons_columns where table_name='TEMP_PROCESS_INST' and COLUMN_NAME <> 'PIID' ;
+    alter table TEMP_PROCESS_INST modify SYSTEM_ID null;
+    alter table TEMP_PROCESS_INST modify TEMPLATE_ID null;
+    alter table TEMP_PROCESS_INST modify TEMPLATE_VER null;
+    alter table TEMP_PROCESS_INST modify APPLY_ID null;
+    alter table TEMP_PROCESS_INST modify CREATE_TIME null;
+    alter table TEMP_PROCESS_INST modify STATE null;
+    alter table TEMP_PROCESS_INST modify PROVINCE_ID null
 
 ---
 
@@ -103,16 +131,24 @@
 
     conn mss/passwd ;
 
+    set serveroutput on; 
+
     declare
     v_count number; 
     begin
-    -- for data in ( select /*+ index(uniflow_workitem uniflow_workitem_query3) */ wiid from uniflow_workitem where system_id = 'ImageAssist' and state in (1,3,10) ) 
     for data in ( select wiid from temp_workitem ) 
+    -- for data in ( select piid from temp_process_inst ) 
     loop 
+    	dbms_output.put_line('update uniflow_workitem uw set uw.state = 2 where uw.wiid = '''||data.wiid||'''');
     	update uniflow_workitem uw set uw.state = 2 where uw.wiid = data.wiid;
+
+    	-- dbms_output.put_line('update uniflow_process_inst up set up.state = 2 where up.piid = '''||data.piid||'''');
+    	-- update uniflow_process_inst up set up.state = 2 where up.piid = data.piid;
+
     	v_count := v_count + 1;
     	if v_count >= 2000 then 
     	commit;
+
     	v_count := 1;
     	end if;
     end loop;
