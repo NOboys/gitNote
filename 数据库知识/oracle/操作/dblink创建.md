@@ -45,7 +45,7 @@ create public database link dblink_name connect to username identified by passwo
 	)
 
 --通过dblink查询表信息
-select * from scott.tb_test@to_bylw;
+select * from scott.tb_test@bylw;
 ```
 
 
@@ -57,7 +57,7 @@ create public database link to_test
     using '(DESCRIPTION = (ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.5)(PORT = 1521)))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = bylw)))';
 
 --通过dblink查询表信息
-select * from scott.tb_test@to_bylw;
+select * from scott.tb_test@to_test;
 
 ```
 
