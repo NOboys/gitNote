@@ -222,7 +222,8 @@ shell和command的区别：shell模块可以特殊字符及管道符，而comman
 
 ```
 该模块主要用于收集信息，是通过调用facts组件来实现的。
-　　facts组件是Ansible用于采集被管机器设备信息的一个功能，我们可以使用setup模块查机器的所有facts信息，可以使用filter来查看指定信息。整个facts信息被包装在一个JSON格式的数据结构中，ansible_facts是最上层的值。
+　　facts组件是Ansible用于采集被管机器设备信息的一个功能，我们可以使用setup模块查机器的所有facts信息，可以使用filter来查看指定信息。  
+    整个facts信息被包装在一个JSON格式的数据结构中，ansible_facts是最上层的值。
 ```
 
 ## synchronize模块  
