@@ -7,7 +7,8 @@ https://my.oschina.net/u/1783725/blog/1602406
 ### 常规使用
 
 
-```- hosts: localhost
+```
+- hosts: localhost
   tasks:   
     - block:
         - yum: name={{ item }} state=installed
@@ -29,7 +30,8 @@ rescue：只有脚本报错时才执行
 
 always：无论结果如何都执行
 
-```- hosts: localhost 
+```
+- hosts: localhost 
   tasks:
    - block:
        - debug: msg='I execute normally'
