@@ -1,12 +1,13 @@
+```来源：
+https://my.oschina.net/u/1783725/blog/1602406
+
+```
 
 
-      介绍：block 是 ansible 在 2.0 版本引入的一个特性，块功能可以将任务进行逻辑分组，并且可以在块级别上应用任务变量。同时也可以使用类似于其他编程语言处理异常那样的方法，来处理块内部的任务异常。
+### 常规使用
 
-     原理：block 中的组任务，都会继承 block 的属相（支持 when，不支持 with_items），部署时会分别执行组中的任务，并且都会继承 block 的属相（在任务后添加 block 的 when 条件）
 
-1、常规使用
----
-- hosts: localhost
+```- hosts: localhost
   tasks:   
     - block:
         - yum: name={{ item }} state=installed
@@ -19,7 +20,10 @@
       when: ansible_distribution == 'CentOS'
       become: true
       become_user: root
-2、异常处理
+
+```
+
+### 异常处理
 rescue：只有脚本报错时才执行
 
 always：无论结果如何都执行
