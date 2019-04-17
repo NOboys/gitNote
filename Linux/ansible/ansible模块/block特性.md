@@ -122,7 +122,11 @@ The always section runs no matter what previous error did or did not occur in th
     - name: dddd
       shell: echo dddd
 
+```
+
 #### block 没有 with_items 属相
+
+```
 
 - hosts: localhost
   tasks:
