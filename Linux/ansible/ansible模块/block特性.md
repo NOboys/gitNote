@@ -57,7 +57,7 @@ The always section runs no matter what previous error did or did not occur in th
 （1）在 2.0 中添加了块特性，在 2.3 中添加了块的 name 特性
 错误反例 (2.3 以下不支持。2.3 及以上就支持了)
 
----
+```
 - hosts: localhost
   tasks:
     - name: bbbb          #2.3以下的正确姿势应该去掉block的name
@@ -69,8 +69,11 @@ The always section runs no matter what previous error did or did not occur in th
     - name: cccc
       shell: echo cccc
 
+
 #-----报错
  - name: bbbb
+ 
+```
       ^ here
 （2）block 的子任务中不能添加注册的变量
 原因：如果 block 的 when 结果是 false，就不会执行任务获得注册变量的值，但是组中有些任务调用此注册变量，就会任务失败。
