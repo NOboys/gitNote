@@ -54,7 +54,8 @@ The always section runs no matter what previous error did or did not occur in th
 
 ### 常见陷阱
 
-（1）在 2.0 中添加了块特性，在 2.3 中添加了块的 name 特性
+#### 版本新特性
+在 2.0 中添加了块特性，在 2.3 中添加了块的 name 特性
 错误反例 (2.3 以下不支持。2.3 及以上就支持了)
 
 ```
@@ -77,11 +78,12 @@ The always section runs no matter what previous error did or did not occur in th
  
 ```
 
-（2）block 的子任务中不能添加注册的变量
+#### block 的子任务中不能添加注册的变量
 
 原因：如果 block 的 when 结果是 false，就不会执行任务获得注册变量的值，但是组中有些任务调用此注册变量，就会任务失败。
 
----
+```
+
 - hosts: localhost
   tasks:
     - block:
@@ -97,9 +99,12 @@ The always section runs no matter what previous error did or did not occur in th
     - name: dddd
       shell: echo dddd
 
+
+```
+
  解决办法：可以给 block 的 vars 属相添加变量，在 block 的组任务中进行调用
 
----
+```
 - hosts: localhost
   tasks:
     - name: bbbb
@@ -116,8 +121,9 @@ The always section runs no matter what previous error did or did not occur in th
 
     - name: dddd
       shell: echo dddd
-（3）block 没有 with_items 属相
----
+
+#### block 没有 with_items 属相
+
 - hosts: localhost
   tasks:
     - block:
@@ -130,12 +136,7 @@ The always section runs no matter what previous error did or did not occur in th
     - name: dddd
       shell: echo dddd
 
+
+```
+
  
-全文完
-本文由 简悦 SimpRead 优化，用以提升阅读体验。
-1、常规使用
-2、异常处理
-3、常见陷阱
-（1）在 2.0 中添加了块特性，在 2.3 中添加了块的 name 特性
-（2）block 的子任务中不能添加注册的变量
-（3）block 没有 with_items 属相
