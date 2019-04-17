@@ -24,12 +24,12 @@ https://my.oschina.net/u/1783725/blog/1602406
 ```
 
 ### 异常处理
+
 rescue：只有脚本报错时才执行
 
 always：无论结果如何都执行
 
----
-- hosts: localhost 
+```- hosts: localhost 
   tasks:
    - block:
        - debug: msg='I execute normally'
@@ -41,6 +41,9 @@ always：无论结果如何都执行
        - debug: msg='I also never execute :-('
      always:
        - debug: msg="this always executes"
+
+```
+
       The tasks in the block would execute normally, if there is any error the rescue section would get executed with whatever you need to do to recover from the previous error. The always section runs no matter what previous error did or did not occur in the block and rescue sections.
 
 3、常见陷阱
