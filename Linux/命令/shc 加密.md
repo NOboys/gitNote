@@ -1,6 +1,7 @@
 ### 安装shc 
 
-```wget http://www.datsi.fi.upm.es/~frosal/sources/shc-3.8.9.tgz
+```
+wget http://www.datsi.fi.upm.es/~frosal/sources/shc-3.8.9.tgz
 tar -zxvf shc-3.8.7.tgz
 cd shc-3.8.7
 mkdir -p /usr/local/man/man1/
