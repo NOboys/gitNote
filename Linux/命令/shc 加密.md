@@ -27,6 +27,6 @@ make install  (需要root权限，部署到/usr/local/bin里)
 
 ### 生成文件
 最后输出两个文件
-test.sh.x.c C编译文件
-test.sh
+test.sh.x.c C编译文件，可删除
+test.sh.x 可执行文件
 
