@@ -70,22 +70,6 @@
     .
     ./a.sh    
 
-- 案例 pwd ：路径为当前目录
-
-
-    [lande@p0lcyap912 ~]$ pwd
-    /home/lande
-    [lande@p0lcyap912 ~]$ 
-    [lande@p0lcyap912 ~]$ 
-    [lande@p0lcyap912 ~]$ more /data/zone/a.sh 
-    #/bin/sh
-    l_PATH=`pwd`
-    echo $l_PATH
-
-    [lande@p0lcyap912 ~]$ 
-    [lande@p0lcyap912 ~]$ /data/zone/a.sh 
-    /home/lande
-    [lande@p0lcyap912 ~]$ 
 
 ## too many arguments
 
