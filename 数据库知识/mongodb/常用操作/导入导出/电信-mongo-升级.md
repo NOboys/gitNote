@@ -20,6 +20,27 @@ mongo2 由于存储引擎落后，导致服务器存储几乎被占满,常引发
 
 ```
 
+##  实践操作简单说明
+
+
+```
+建用户，机器配置，环境变量，
+
+直接拷贝mongo4安装目录就行
+
+[mongouser@p1lcyap921 data]$ ll mongo406.tar 
+-rw-rw-r-- 1 mongouser mongouser 88228770 Apr 26 10:33 mongo406.tar
+[mongouser@p1lcyap921 data]$ pwd
+/translog/data
+[mongouser@p1lcyap921 data]$ hostname -i
+192.168.61.246
+
+比如
+scp -r mongouser@192.168.61.246:/translog/data/mongo406.tar /translog/data
+```
+
+
+
 ##  实践操作流程说明
 
 
