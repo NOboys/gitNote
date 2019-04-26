@@ -259,3 +259,8 @@ db.pushlog.ensureIndex({"time":-1,"data.aiid":1,"data.serviceType":1},{name:"idx
 ### 配置注释打开，并重启mongo4
 
 ### 验证服务
+
+```
+mongmongostat -u logs -p logs123 --authenticationDatabase admin 
+
+```
