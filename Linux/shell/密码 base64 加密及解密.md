@@ -21,7 +21,7 @@ function enrypt_pass()
 
 
 ----------------------------------
-cat test.sh
+cat test.sh  需要密文 .all 文件
 ----------------------------------
 #!/bin/sh
 
