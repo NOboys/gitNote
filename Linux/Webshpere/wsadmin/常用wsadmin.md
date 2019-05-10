@@ -164,7 +164,7 @@ AdminConfig.save()
 AdminNodeManagement.syncActiveNodes()
 ```
 
-- 应用停止
+- 应用停止 (无法使用集群)
 
 
 
@@ -175,13 +175,12 @@ AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_
 
 
 
-- 应用启动
+- 应用启动 (无法使用集群)
 
 
 ```
 AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_member104,*'),'startApplication','BQConsole_war')
 ```
-
 
 
 
@@ -209,5 +208,3 @@ AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_
 
 /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython -f /data/wsadmin/test1.py UCC_Cluster  -user wasadmin -password Zone2019# -tracefile /data/wsadmin/trace.log
 ```
-
-    
