@@ -182,6 +182,12 @@ AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_
 AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_member104,*'),'startApplication','BQConsole_war')
 ```
 
+- 节点重启（无法全选）
+
+```
+AdminControl.invoke('WebSphere:name=NodeAgent,process=nodeagent,platform=common,node=WasNode124,diagnosticProvider=true,version=7.0.0.29,type=NodeAgent,mbeanIdentifier=NodeAgent,cell=was01Cell01,spec=1.0', 'restart', '[false false]', '[java.lang.Boolean java.lang.Boolean]')
+```
+
 
 
 #### 执行模式
@@ -208,3 +214,5 @@ AdminControl.invoke(AdminControl.queryNames('type=ApplicationManager,process=yw_
 
 /data/IBM/profiles/WasDmgr01/bin/wsadmin.sh -lang jython -f /data/wsadmin/test1.py UCC_Cluster  -user wasadmin -password Zone2019# -tracefile /data/wsadmin/trace.log
 ```
+
+    
