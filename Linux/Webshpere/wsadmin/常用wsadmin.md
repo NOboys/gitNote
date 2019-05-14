@@ -117,7 +117,7 @@ gdtestwas103Cell01(cells/gdtestwas103Cell01|cell.xml#Cell_1)
 
 
 ```
-整包更新 可能会有 OOM 的错误，
+整包更新 可能会有 OOM 的错误
 可能是包太大，比如70M+
 20M是可以的
 
