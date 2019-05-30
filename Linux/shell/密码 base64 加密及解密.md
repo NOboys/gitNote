@@ -1,58 +1,59 @@
 
-- 密码原文： Zone2019#
+- 密码原文： 
 
 
 ```
 ----------------------------------
-cat /data/test/func_pass
+cat /data/zoneland/startting-auto/password
+两重加密
+两重解密
 ----------------------------------
 
 # 解密
 function decrypt_pass()
 {
-	echo "$1" | base64 -d
+	echo "$1" | base64 -d | base64 -d 
 }
 
 # 加密
 function enrypt_pass()
 {
-    echo "$1" | base64 -i
+    echo "$1" | base64 -i | base64 -i
 }
 
 
 ----------------------------------
-cat test.sh  
-----------------------------------
-#!/bin/sh
-
-source  /data/test/funcpass
-
-password="Wm9uZTIwMTkjCg=="
-
-pd=`decrypt_pass $password `
-echo $pd
-
-
-----------------------------------
-cat jiemi.sh 需要密文 .all 文件
+cat jiami.sh
 ----------------------------------
 #!/bin/sh
 
 source  /data/zoneland/startting-auto/password/funcpass
 
-# 解密
-gzexe -d .all
+echo $1
+enrypt_pass $1
 
-for i in `cat  .all`;do
-	mw=`enrypt_pass $i`
-	echo "$i  $mw"
-done
 
-# 加密
-gzexe .all
-rm -rf .all~
+----------------------------------
+cat jiemi.sh  
+----------------------------------
+#!/bin/sh
+
+source  /data/zoneland/startting-auto/password/funcpass
+
+echo $1
+decrypt_pass $1 
+
 ```
 
 ---
 
+####  根据时间随记生成密码
+
+
+```
+[lande@p0lcyap912 password]$ ./jiami.sh FZ_cgfz+`date +%s:%N`
+FZ_cgfz+1559186551:111582394
+UmxwZlkyZG1laXN4TlRVNU1UZzJOVFV4T2pFeE1UVTRNak01TkFvPQo=
+
+```
 
