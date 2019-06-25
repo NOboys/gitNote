@@ -29,8 +29,10 @@ cat jiami.sh
 
 source  /data/zoneland/startting-auto/password/funcpass
 
-echo $1
-enrypt_pass $1
+read -p  "显示输入明文:" rand
+
+echo "密文如下:"
+enrypt_pass $rand
 
 
 ----------------------------------
