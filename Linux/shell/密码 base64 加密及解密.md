@@ -42,8 +42,13 @@ cat jiemi.sh
 
 source  /data/zoneland/startting-auto/password/funcpass
 
-echo $1
-decrypt_pass $1 
+read -p  "显示输入密文:" rand
+
+echo "明文如下:"
+decrypt_pass $rand
+
+echo "
+  "
 
 ```
 
